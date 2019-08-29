@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -18,4 +18,6 @@ urlpatterns = [
         views.ReveiwDetailAPIView.as_view(),
         name='review-detail'),
     
+    path('api-auth',
+        include('rest_framework.urls'))
 ]
