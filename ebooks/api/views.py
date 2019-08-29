@@ -1,5 +1,6 @@
 from rest_framework import generics
 # from rest_framework import mixins
+from rest_framework import permissions
 
 from ebooks import models
 from . import serializers
@@ -8,6 +9,7 @@ from . import serializers
 class EbookListCreateAPIView(generics.ListCreateAPIView):
     queryset = models.Ebook.objects.all()
     serializer_class = serializers.EbookSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,]
 
 class EbookDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Ebook.objects.all()
