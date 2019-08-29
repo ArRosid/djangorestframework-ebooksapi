@@ -4,12 +4,12 @@ from rest_framework import permissions
 
 from ebooks import models
 from . import serializers
-
+from . import permissions as custom_permissions
 
 class EbookListCreateAPIView(generics.ListCreateAPIView):
     queryset = models.Ebook.objects.all()
     serializer_class = serializers.EbookSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly,]
+    permission_classes = [custom_permissions.IsAdminOrReadOnly,]
 
 class EbookDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Ebook.objects.all()
