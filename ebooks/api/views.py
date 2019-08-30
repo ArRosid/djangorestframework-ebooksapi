@@ -6,11 +6,13 @@ from rest_framework.exceptions import ValidationError
 from ebooks import models
 from . import serializers
 from . import permissions as custom_permissions
+from . import paginations
 
 class EbookListCreateAPIView(generics.ListCreateAPIView):
     queryset = models.Ebook.objects.all()
     serializer_class = serializers.EbookSerializer
     permission_classes = [custom_permissions.IsAdminOrReadOnly,]
+    pagination_class = paginations.SmallSetPagination
 
 class EbookDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Ebook.objects.all()
