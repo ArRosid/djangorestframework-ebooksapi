@@ -2,6 +2,8 @@ from rest_framework import serializers
 from ebooks import models
 
 class ReviewSerializer(serializers.ModelSerializer):
+    review_author = serializers.StringRelatedField(read_only=True)
+    
     class Meta:
         model = models.Review
         fields = "__all__"
