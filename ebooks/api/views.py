@@ -37,7 +37,7 @@ class ReviewCreateAPIView(generics.CreateAPIView):
 class ReveiwDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Review.objects.all()
     serializer_class = serializers.ReviewSerializer
-
+    permission_classes = [custom_permissions.IsAuthorReviewOrReadOnly,]
 
 # class EbookListCreateAPIView(mixins.ListModelMixin,
 #                             mixins.CreateModelMixin,
